@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slot_Machine 1.0", "Slot_Machine 1.0\Slot_Machine 1.0.csproj", "{427903C1-DF6A-4495-9FEC-9E71DFD856F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{427903C1-DF6A-4495-9FEC-9E71DFD856F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{427903C1-DF6A-4495-9FEC-9E71DFD856F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{427903C1-DF6A-4495-9FEC-9E71DFD856F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{427903C1-DF6A-4495-9FEC-9E71DFD856F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CE770CC-A6CE-45DD-8219-FD2E379F9A9E}
+	EndGlobalSection
+EndGlobal
