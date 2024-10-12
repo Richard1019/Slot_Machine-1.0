@@ -6,41 +6,66 @@ namespace Slot_Machine_1._0
     {
         static void Main(string[] args)
         {
-           
-            Random random = new Random();
-            int[] symbols = { 1, 2, 3, 4, 5, 6, };
+            const int GridRows = 3;
+            const int GRidColumns = 3;
+
+            int[] symbols = { 1, 2,};
             int Playerbet = 0;
             int Purse = 20;
-            int GridRows = 3;
-            int GRidColumns = 3;
-
+            
             Console.WriteLine("\nWanna play some Slot machine..? Of course you do..");
-            Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, and every line across triples it");
+            Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line is jackpot.");
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
 
             Console.WriteLine("\nNow decide which grids you wanna play!");
-            Console.WriteLine("V1, V2, V3 is for vertical, H1, H2, H3 is for horizontal, D is for diagonal");
+            Console.WriteLine("V for vertical, H for horizontal, D is for diagonal and X is for the middle.");
 
-            int[,] V1 = new int[GridRows, GRidColumns];
-            int[,] V2 = new int[GridRows, GRidColumns];
-            int[,] V3 = new int[GridRows, GRidColumns];
-            int[,] H1 = new int[GridRows, GRidColumns];
-            int[,] H2 = new int[GridRows, GRidColumns];
-            int[,] H3 = new int[GridRows, GRidColumns];
-            int[,] D = new int[GridRows, GRidColumns];
+            char playerLine = Console.ReadKey().KeyChar;
+            List<char> playersGridchoice = new List<char>();
 
-            string playerLine = Console.ReadLine();
-            if (playerLine != )
+            // if () 
+            //{
+               // Console.WriteLine("Invalid input. Please choose between the letters of V, H, D or X");
+            //}
 
-            Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
+           // Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
 
-            int playerBet = int.Parse(Console.ReadLine());
+
+
+            int[,] grid = new int[3, 3];
+            Random randomNumber = new Random();
+            int slotnumbers = randomNumber.Next(1, 3);
+
+            for (int rowindex = 0; rowindex < 3; rowindex++)
+            {
+                for (int columnindex = 0; columnindex < 3; columnindex++)
+                {
+                    grid[rowindex, columnindex] = slotnumbers;
+                }  
+            }
+
+            for (int rowindex = 0; rowindex < 3; rowindex++)
+            {
+                for (int columnindex = 0; columnindex < 3; columnindex++)
+                {
+                    Console.WriteLine(grid[rowindex, columnindex]);
+                }
+                Console.WriteLine();
+            }
+            
+            // 2 1 1
+            // 2 1 1
+            // 2 1 1
+
            
 
-            if (playerBet > 10 && playerBet == 0 )
-            {
-                Console.WriteLine("False bet, try again");
-            }
+            //int playerBet = int.Parse(Console.ReadLine());
+           
+
+            //if (playerBet > 10 && playerBet == 0 )
+            //{
+            //    Console.WriteLine("False bet, try again");
+            //}
         }
     }
 }
