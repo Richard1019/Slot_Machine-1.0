@@ -7,7 +7,7 @@ namespace Slot_Machine_1._0
         static void Main(string[] args)
         {
             const int GridRows = 3;
-            const int GRidColumns = 3;
+            const int GridColumns = 3;
 
             int[] symbols = { 1, 2,};
             int Playerbet = 0;
@@ -32,21 +32,21 @@ namespace Slot_Machine_1._0
 
 
 
-            int[,] grid = new int[3, 3];
+            int[,] grid = new int[GridRows, GridColumns];
             Random randomNumber = new Random();
             int slotnumbers = randomNumber.Next(1, 3);
 
-            for (int rowindex = 0; rowindex < 3; rowindex++)
+            for (int rowindex = 0; rowindex < GridRows; rowindex++)
             {
-                for (int columnindex = 0; columnindex < 3; columnindex++)
+                for (int columnindex = 0; columnindex < GridColumns; columnindex++)
                 {
                     grid[rowindex, columnindex] = slotnumbers;
                 }  
             }
 
-            for (int rowindex = 0; rowindex < 3; rowindex++)
+            for (int rowindex = 0; rowindex < GridRows; rowindex++)
             {
-                for (int columnindex = 0; columnindex < 3; columnindex++)
+                for (int columnindex = 0; columnindex < GridColumns; columnindex++)
                 {
                     Console.WriteLine(grid[rowindex, columnindex]);
                 }
