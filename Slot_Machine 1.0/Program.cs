@@ -22,6 +22,7 @@ namespace Slot_Machine_1._0
 
             char playerLine = Console.ReadKey().KeyChar;
             List<char> playersGridchoice = new List<char>();
+            Console.WriteLine("\n");
 
             // if () 
             //{
@@ -34,13 +35,13 @@ namespace Slot_Machine_1._0
 
             int[,] grid = new int[GridRows, GridColumns];
             Random randomNumber = new Random();
-            int slotnumbers = randomNumber.Next(1, 3);
+            
 
             for (int rowindex = 0; rowindex < GridRows; rowindex++)
             {
                 for (int columnindex = 0; columnindex < GridColumns; columnindex++)
                 {
-                    grid[rowindex, columnindex] = slotnumbers;
+                    grid[rowindex, columnindex] = randomNumber.Next(1, 3); 
                 }  
             }
 
@@ -48,7 +49,7 @@ namespace Slot_Machine_1._0
             {
                 for (int columnindex = 0; columnindex < GridColumns; columnindex++)
                 {
-                    Console.WriteLine(grid[rowindex, columnindex]);
+                    Console.Write(grid[rowindex, columnindex]);
                 }
                 Console.WriteLine();
             }
