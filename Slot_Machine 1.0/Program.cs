@@ -20,9 +20,10 @@ namespace Slot_Machine_1._0
 
             Console.WriteLine("\nNow decide which grids you wanna play!");
             Console.WriteLine("V for vertical, H for horizontal, D is for diagonal and X is for the middle.");
+            //Console.WriteLine("\n");
 
             string playerLine = Console.ReadLine();
-            Console.WriteLine("\n");
+            
             List<string> playersGridchoice = ["v", "h", "d", "x"];
 
             if (!playersGridchoice.Contains(playerLine))
@@ -30,8 +31,7 @@ namespace Slot_Machine_1._0
                 Console.WriteLine("Invalid Input. Please use the assigned letters.");
             }
 
-            if (playersGridchoice.Contains(playerLine)) ;
-
+            else
             {
                 int[,] grid = new int[GridRows, GridColumns];
                 Random randomNumber = new Random();
