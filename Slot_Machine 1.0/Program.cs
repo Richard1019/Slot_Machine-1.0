@@ -9,6 +9,8 @@ namespace Slot_Machine_1._0
         {
             const int GridRows = 3;
             const int GridColumns = 3;
+            const int MinBet = 1;
+            const int MaxBet = 10;
 
             int[] symbols = { 1, 2,};
             int Playerbet = 0;
@@ -25,6 +27,7 @@ namespace Slot_Machine_1._0
             string playerLine = Console.ReadLine();
             
             List<string> playersGridchoice = ["v", "h", "d", "x"];
+            
 
             if (!playersGridchoice.Contains(playerLine))
             {
@@ -33,6 +36,8 @@ namespace Slot_Machine_1._0
 
             else
             {
+                Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
+
                 int[,] grid = new int[GridRows, GridColumns];
                 Random randomNumber = new Random();
 
@@ -53,13 +58,10 @@ namespace Slot_Machine_1._0
                     }
                     Console.WriteLine();
                 }
-                // Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!")
             }
-           
-                
-            // 2 1 1
-            // 2 1 1
-            // 2 1 1
+            
+
+            
 
 
 
