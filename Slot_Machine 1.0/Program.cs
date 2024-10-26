@@ -1,4 +1,5 @@
-﻿using System.Runtime.Intrinsics;
+﻿using System.ComponentModel.Design;
+using System.Runtime.Intrinsics;
 
 namespace Slot_Machine_1._0
 {
@@ -20,48 +21,50 @@ namespace Slot_Machine_1._0
             Console.WriteLine("\nNow decide which grids you wanna play!");
             Console.WriteLine("V for vertical, H for horizontal, D is for diagonal and X is for the middle.");
 
-            char playerLine = Console.ReadKey().KeyChar;
-            List<char> playersGridchoice = new List<char>();
+            string playerLine = Console.ReadLine();
             Console.WriteLine("\n");
+            List<string> playersGridchoice = ["v", "h", "d", "x"];
 
-            // if () 
-            //{
-               // Console.WriteLine("Invalid input. Please choose between the letters of V, H, D or X");
-            //}
-
-           // Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
-
-
-
-            int[,] grid = new int[GridRows, GridColumns];
-            Random randomNumber = new Random();
-            
-
-            for (int rowindex = 0; rowindex < GridRows; rowindex++)
+            if (!playersGridchoice.Contains(playerLine))
             {
-                for (int columnindex = 0; columnindex < GridColumns; columnindex++)
-                {
-                    grid[rowindex, columnindex] = randomNumber.Next(1, 3); 
-                }  
+                Console.WriteLine("Invalid Input. Please use the assigned letters.");
             }
 
-            for (int rowindex = 0; rowindex < GridRows; rowindex++)
+            if (playersGridchoice.Contains(playerLine)) ;
+
             {
-                for (int columnindex = 0; columnindex < GridColumns; columnindex++)
+                int[,] grid = new int[GridRows, GridColumns];
+                Random randomNumber = new Random();
+
+
+                for (int rowindex = 0; rowindex < GridRows; rowindex++)
                 {
-                    Console.Write(grid[rowindex, columnindex]);
+                    for (int columnindex = 0; columnindex < GridColumns; columnindex++)
+                    {
+                        grid[rowindex, columnindex] = randomNumber.Next(1, 3);
+                    }
                 }
-                Console.WriteLine();
+
+                for (int rowindex = 0; rowindex < GridRows; rowindex++)
+                {
+                    for (int columnindex = 0; columnindex < GridColumns; columnindex++)
+                    {
+                        Console.Write(grid[rowindex, columnindex]);
+                    }
+                    Console.WriteLine();
+                }
+                // Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!")
             }
-            
+           
+                
             // 2 1 1
             // 2 1 1
             // 2 1 1
 
-           
+
 
             //int playerBet = int.Parse(Console.ReadLine());
-           
+
 
             //if (playerBet > 10 && playerBet == 0 )
             //{
