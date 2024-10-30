@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.Design;
+﻿using System.Collections.Frozen;
+using System.Collections.Immutable;
+using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.Intrinsics;
 
 namespace Slot_Machine_1._0
@@ -7,15 +10,15 @@ namespace Slot_Machine_1._0
     {
         static void Main(string[] args)
         {
-            const int GridRows = 3;
-            const int GridColumns = 3;
-            const int MinBet = 1;
-            const int MaxBet = 10;
+            const int GRIDROWS = 3;
+            const int GRIDCOLUMNS = 3;
+            const int MINBET = 1;
+            const int MAXBET = 10;
 
-            int[] symbols = { 1, 2,};
+
             int Playerbet = 0;
             int Purse = 20;
-            
+
             Console.WriteLine("\nWanna play some Slot machine..? Of course you do..");
             Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line is jackpot.");
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
@@ -25,53 +28,52 @@ namespace Slot_Machine_1._0
             //Console.WriteLine("\n");
 
             string playerLine = Console.ReadLine();
-            
+
             List<string> playersGridchoice = ["v", "h", "d", "x"];
-            
+
 
             if (!playersGridchoice.Contains(playerLine))
             {
                 Console.WriteLine("Invalid Input. Please use the assigned letters.");
+
             }
 
-            else
+            if (playersGridchoice.Contains(playerLine))
             {
                 Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
+                // double playerBet = Convert.ToDouble(Console.ReadLine
 
-                int[,] grid = new int[GridRows, GridColumns];
+                int playerBet = Convert.ToInt32(Console.ReadLine());
+
+                if (playerBet > MAXBET)
+                {
+                    Console.WriteLine("False bet, try again");
+                }
+
+                else;
+
+                int[,] grid = new int[GRIDROWS, GRIDCOLUMNS];
                 Random randomNumber = new Random();
 
 
-                for (int rowindex = 0; rowindex < GridRows; rowindex++)
+                for (int rowindex = 0; rowindex < GRIDROWS; rowindex++)
                 {
-                    for (int columnindex = 0; columnindex < GridColumns; columnindex++)
+                    for (int columnindex = 0; columnindex < GRIDCOLUMNS; columnindex++)
                     {
                         grid[rowindex, columnindex] = randomNumber.Next(1, 3);
                     }
                 }
 
-                for (int rowindex = 0; rowindex < GridRows; rowindex++)
+                for (int rowindex = 0; rowindex < GRIDROWS; rowindex++)
                 {
-                    for (int columnindex = 0; columnindex < GridColumns; columnindex++)
+                    for (int columnindex = 0; columnindex < GRIDCOLUMNS; columnindex++)
                     {
                         Console.Write(grid[rowindex, columnindex]);
                     }
                     Console.WriteLine();
                 }
             }
-            
-
-            
-
-
-
-            //int playerBet = int.Parse(Console.ReadLine());
-
-
-            //if (playerBet > 10 && playerBet == 0 )
-            //{
-            //    Console.WriteLine("False bet, try again");
-            //}
         }
     }
 }
+
