@@ -1,10 +1,4 @@
-﻿using System.Collections.Frozen;
-using System.Collections.Immutable;
-using System.ComponentModel.Design;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.Intrinsics;
-
-namespace Slot_Machine_1._0
+﻿namespace Slot_Machine_1._0
 {
     internal class Program
     {
@@ -27,30 +21,32 @@ namespace Slot_Machine_1._0
             Console.WriteLine("V for vertical, H for horizontal, D is for diagonal and X is for the middle.");
             //Console.WriteLine("\n");
 
-            string playerLine = Console.ReadLine();
+            string playerLine = Console.ReadLine(); //k
 
             List<string> playersGridchoice = ["v", "h", "d", "x"];
 
 
-            if (!playersGridchoice.Contains(playerLine))
+            while (!playersGridchoice.Contains(playerLine))
             {
                 Console.WriteLine("Invalid Input. Please use the assigned letters.");
+                playerLine = Console.ReadLine();
+            }
+
+
+            Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
+           
+
+            int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
+
+            while (playerBet > MAXBET)
+            {
+                Console.WriteLine("False bet, try again");
+                playerBet = Convert.ToInt32(Console.ReadLine());
 
             }
 
-            if (playersGridchoice.Contains(playerLine))
+            if (playerBet< MAXBET)
             {
-                Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
-                // double playerBet = Convert.ToDouble(Console.ReadLine
-
-                int playerBet = Convert.ToInt32(Console.ReadLine());
-
-                if (playerBet > MAXBET)
-                {
-                    Console.WriteLine("False bet, try again");
-                }
-
-                else;
 
                 int[,] grid = new int[GRIDROWS, GRIDCOLUMNS];
                 Random randomNumber = new Random();
@@ -73,6 +69,7 @@ namespace Slot_Machine_1._0
                     Console.WriteLine();
                 }
             }
+
         }
     }
 }
