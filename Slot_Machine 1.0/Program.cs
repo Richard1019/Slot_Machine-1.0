@@ -36,12 +36,13 @@
             Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
            
 
-            int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
-
+            //int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
+            int playerBet = int.Parse(Console.ReadLine());
             while (playerBet > MAXBET)
             {
                 Console.WriteLine("False bet, try again");
-                playerBet = Convert.ToInt32(Console.ReadLine());
+                playerBet = int.Parse(Console.ReadLine());
+
 
             }
 
