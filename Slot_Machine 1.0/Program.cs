@@ -18,10 +18,9 @@
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
 
             Console.WriteLine("\nNow decide which grids you wanna play!");
-            Console.WriteLine("V for vertical, H for horizontal, D is for diagonal and X is for the middle.");
-            //Console.WriteLine("\n");
+            Console.WriteLine("v for vertical, h for horizontal, d is for diagonal and x is for the middle.");
 
-            string playerLine = Console.ReadLine(); //k
+            string playerLine = Console.ReadLine().ToLower();
 
             List<string> playersGridchoice = ["v", "h", "d", "x"];
 
@@ -48,7 +47,6 @@
 
             if (playerBet <= MAX_BET)
             {
-                Console.WriteLine("\n");
                 int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
                 Random randomNumber = new Random();
 
