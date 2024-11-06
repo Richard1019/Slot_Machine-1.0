@@ -42,13 +42,13 @@ namespace Slot_Machine_1._0
 
             Console.WriteLine("Good. Now let`s spin that thing.");
 
-            while (playerBet > MAX_BET)
+            while (Playerbet > MAX_BET)
             {
                 Console.WriteLine("False bet, try again");
-                playerBet = int.Parse(Console.ReadLine());
+                Playerbet = int.Parse(Console.ReadLine());
             }
 
-            if (playerBet <= MAX_BET)
+            if (Playerbet <= MAX_BET)
             {
                 int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
                 Random randomNumber = new Random();
