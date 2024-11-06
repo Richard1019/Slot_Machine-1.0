@@ -1,4 +1,6 @@
-﻿namespace Slot_Machine_1._0
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Slot_Machine_1._0
 {
     internal class Program
     {
@@ -35,8 +37,9 @@
             Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
 
 
-            ///int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
-            int playerBet = int.Parse(Console.ReadLine());
+            //int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
+            bool success = int.TryParse(Console.ReadLine, out Playerbet);
+
             Console.WriteLine("Good. Now let`s spin that thing.");
 
             while (playerBet > MAX_BET)
