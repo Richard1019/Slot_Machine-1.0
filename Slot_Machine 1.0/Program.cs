@@ -38,9 +38,8 @@ namespace Slot_Machine_1._0
 
 
             //int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
-            bool success = int.TryParse(Console.ReadLine, out Playerbet);
+            bool success = int.TryParse(Console.ReadLine(), out Playerbet);
 
-            Console.WriteLine("Good. Now let`s spin that thing.");
 
             while (Playerbet > MAX_BET)
             {
@@ -50,6 +49,7 @@ namespace Slot_Machine_1._0
 
             if (Playerbet <= MAX_BET)
             {
+                Console.WriteLine("Good. Now let`s spin that thing.");
                 int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
                 Random randomNumber = new Random();
 
