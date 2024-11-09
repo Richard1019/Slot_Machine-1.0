@@ -32,7 +32,7 @@
             }
 
 
-            Console.WriteLine("Alright, go on, place your bet now! From one dollar to ten!");
+            Console.WriteLine("Alright, go on, place your bet now! From " + MIN_BET + " dollar to " + MAX_BET);
 
 
             //int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
