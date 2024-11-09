@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace Slot_Machine_1._0
+﻿namespace Slot_Machine_1._0
 {
     internal class Program
     {
@@ -40,39 +38,38 @@ namespace Slot_Machine_1._0
             //int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
             bool success = int.TryParse(Console.ReadLine(), out Playerbet);
 
+            if (!success)
 
-            while (Playerbet > MAX_BET)
             {
+                //while (Playerbet > MAX_BET)
+                //{
                 Console.WriteLine("False bet, try again");
                 Playerbet = int.Parse(Console.ReadLine());
+                // }
             }
-
-            if (Playerbet <= MAX_BET)
-            {
-                Console.WriteLine("Good. Now let`s spin that thing.");
-                int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
-                Random randomNumber = new Random();
-
-
-                for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
+            else //Playerbet <= MAX_BET
                 {
-                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                    Console.WriteLine("Good. Now let`s spin that thing.");
+                    int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
+                    Random randomNumber = new Random();
+
+                    for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                     {
-                        grid[rowindex, columnindex] = randomNumber.Next(1, 3);
+                        for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                        {
+                            grid[rowindex, columnindex] = randomNumber.Next(1, 3);
+                        }
+                    }
+
+                    for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
+                    {
+                        for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                        {
+                            Console.Write(grid[rowindex, columnindex]);
+                        }
+                        Console.WriteLine();
                     }
                 }
-
-                for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
-                {
-                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
-                    {
-                        Console.Write(grid[rowindex, columnindex]);
-                    }
-                    Console.WriteLine();
-                }
-
-
-            }
 
         }
     }
