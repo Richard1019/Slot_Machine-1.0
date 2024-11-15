@@ -38,38 +38,41 @@
             //int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
             bool success = int.TryParse(Console.ReadLine(), out Playerbet);
 
-            if (!success)
+            while (!success)
 
             {
                 //while (Playerbet > MAX_BET)
                 //{
                 Console.WriteLine("False bet, try again");
-                Playerbet = int.Parse(Console.ReadLine());
-                // }
+                int playerBet = Convert.ToInt32(Console.ReadLine());
+
+                //}
+
+
             }
-            else //Playerbet <= MAX_BET
+            while (Playerbet <= MAX_BET)
+            {
+                Console.WriteLine("Good. Now let`s spin that thing.");
+                int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
+                Random randomNumber = new Random();
+
+                for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                 {
-                    Console.WriteLine("Good. Now let`s spin that thing.");
-                    int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
-                    Random randomNumber = new Random();
-
-                    for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
+                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
-                        for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
-                        {
-                            grid[rowindex, columnindex] = randomNumber.Next(1, 3);
-                        }
-                    }
-
-                    for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
-                    {
-                        for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
-                        {
-                            Console.Write(grid[rowindex, columnindex]);
-                        }
-                        Console.WriteLine();
+                        grid[rowindex, columnindex] = randomNumber.Next(1, 3);
                     }
                 }
+
+                for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
+                {
+                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                    {
+                        Console.Write(grid[rowindex, columnindex]);
+                    }
+                    Console.WriteLine();
+                }
+            }
 
         }
     }
