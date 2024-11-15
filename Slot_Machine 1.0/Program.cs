@@ -35,7 +35,7 @@
             Console.WriteLine("Alright, go on, place your bet now! From " + MIN_BET + " dollar to " + MAX_BET);
 
 
-            //int playerBet = Convert.ToInt32(Console.ReadLine()); //parse
+           
             bool success = int.TryParse(Console.ReadLine(), out Playerbet);
 
             while (!success)
@@ -44,7 +44,9 @@
                 //while (Playerbet > MAX_BET)
                 //{
                 Console.WriteLine("False bet, try again");
-                int playerBet = Convert.ToInt32(Console.ReadLine());
+                //int playerBet = Convert.ToInt32(Console.ReadLine());
+                int.TryParse(Console.ReadLine(), out Playerbet);
+                
 
                 //}
 
