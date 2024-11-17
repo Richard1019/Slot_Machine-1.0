@@ -35,24 +35,24 @@
             Console.WriteLine("Alright, go on, place your bet now! From " + MIN_BET + " dollar to " + MAX_BET);
 
 
-           
+
             bool success = int.TryParse(Console.ReadLine(), out Playerbet);
 
-            while (!success)
+            while (!success || Playerbet <= 0 || Playerbet > MAX_BET)
 
             {
-                //while (Playerbet > MAX_BET)
-                //{
-                Console.WriteLine("False bet, try again");
-                //int playerBet = Convert.ToInt32(Console.ReadLine());
-                int.TryParse(Console.ReadLine(), out Playerbet);
-                
-
-                //}
-
+                if (!success)
+                {
+                    Console.WriteLine("Invalid input, try again");
+                }
+                else if (Playerbet <= 0 || Playerbet > MAX_BET)
+                {
+                    Console.WriteLine($"Invalid bet. Your bet must be between {MIN_BET} and {MAX_BET}.");
+                }
+                success = int.TryParse(Console.ReadLine(), out Playerbet);
 
             }
-            while (Playerbet <= MAX_BET)
+            if (Playerbet <= MAX_BET)
             {
                 Console.WriteLine("Good. Now let`s spin that thing.");
                 int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
