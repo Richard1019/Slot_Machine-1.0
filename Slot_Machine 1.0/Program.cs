@@ -10,7 +10,7 @@
             const int MAX_BET = 10;
 
 
-            int Playerbet = 0;
+            int playerBet = 0;
             int Purse = 20;
 
             Console.WriteLine("\nWanna play some Slot machine..? Of course you do..");
@@ -36,45 +36,44 @@
 
 
 
-            bool success = int.TryParse(Console.ReadLine(), out Playerbet);
+            bool success = int.TryParse(Console.ReadLine(), out playerBet);
 
-            while (!success || Playerbet <= 0 || Playerbet > MAX_BET)
+            while (!success || playerBet <= 0 || playerBet > MAX_BET)
 
             {
                 if (!success)
                 {
                     Console.WriteLine("Invalid input, try again");
                 }
-                else if (Playerbet <= 0 || Playerbet > MAX_BET)
+                else if (playerBet <= 0 || playerBet > MAX_BET)
                 {
                     Console.WriteLine($"Invalid bet. Your bet must be between {MIN_BET} and {MAX_BET}.");
                 }
-                success = int.TryParse(Console.ReadLine(), out Playerbet);
+                success = int.TryParse(Console.ReadLine(), out playerBet);
 
             }
-            if (Playerbet <= MAX_BET)
+
+            Console.WriteLine("Good. Now let`s spin that thing.");
+            int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
+            Random randomNumber = new Random();
+
+            for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
             {
-                Console.WriteLine("Good. Now let`s spin that thing.");
-                int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
-                Random randomNumber = new Random();
-
-                for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
+                for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                 {
-                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
-                    {
-                        grid[rowindex, columnindex] = randomNumber.Next(1, 3);
-                    }
-                }
-
-                for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
-                {
-                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
-                    {
-                        Console.Write(grid[rowindex, columnindex]);
-                    }
-                    Console.WriteLine();
+                    grid[rowindex, columnindex] = randomNumber.Next(1, 3);
                 }
             }
+
+            for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
+            {
+                for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                {
+                    Console.Write(grid[rowindex, columnindex]);
+                }
+                Console.WriteLine();
+            }
+
 
         }
     }
