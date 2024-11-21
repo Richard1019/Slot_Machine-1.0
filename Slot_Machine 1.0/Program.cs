@@ -74,7 +74,7 @@
                 Console.WriteLine();
 
             }
-            if (playerLine == "v")
+            if (playerLine == "x")
             {
                 for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                 {
@@ -86,11 +86,11 @@
             {
 
             }
-            if (playerLine == "d")
+            if (playerLine == "v")
             {
 
             }
-            if (playerLine == "x")
+            if (playerLine == "d")
             {
 
             }
