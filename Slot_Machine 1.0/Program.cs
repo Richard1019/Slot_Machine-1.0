@@ -72,7 +72,29 @@
                     Console.Write(grid[rowindex, columnindex]);
                 }
                 Console.WriteLine();
+
             }
+            if (playerLine == "v")
+            {
+                for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                {
+                    Console.WriteLine("tredfsssf");
+                }
+
+            }
+            if (playerLine == "h")
+            {
+
+            }
+            if (playerLine == "d")
+            {
+
+            }
+            if (playerLine == "x")
+            {
+
+            }
+
 
 
         }
