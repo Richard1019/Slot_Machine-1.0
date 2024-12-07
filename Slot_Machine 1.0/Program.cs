@@ -8,13 +8,14 @@
             const int GRID_COLUMNS = 3;
             const int MIN_BET = 1;
             const int MAX_BET = 10;
+            const int JACKPOT = 50;
 
 
             int playerBet = 0;
             int Purse = 20;
 
             Console.WriteLine("\nWanna play some Slot machine..? Of course you do..");
-            Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line is jackpot.");
+            Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line is jackpot, which instantly adds" + JACKPOT);
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
 
             Console.WriteLine("\nNow decide which grids you wanna play!");
@@ -76,11 +77,11 @@
             }
             if (playerLine == "x")
             {
-                for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
-                {
-                    Console.WriteLine("tredfsssf");
+                if (grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2])
+                { 
+                    Console.WriteLine("Good job. You have won " + JACKPOT);
+                    Console.WriteLine("Your purse now is " + (Purse + JACKPOT));
                 }
-
             }
             if (playerLine == "h")
             {
