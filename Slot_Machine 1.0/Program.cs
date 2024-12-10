@@ -75,13 +75,11 @@
                 Console.WriteLine();
 
             }
-            if (playerLine == "x")
+
+            if (playerLine == "x" && grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2])
             {
-                if (grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2])
-                { 
-                    Console.WriteLine("Good job. You have won " + JACKPOT);
-                    Console.WriteLine("Your purse now is " + (Purse + JACKPOT));
-                }
+                Console.WriteLine("Good job. You have won " + JACKPOT);
+                Console.WriteLine("Your purse now is " + (Purse + JACKPOT));
             }
             if (playerLine == "h")
             {
