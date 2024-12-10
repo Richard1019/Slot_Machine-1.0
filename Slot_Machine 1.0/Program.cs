@@ -9,6 +9,10 @@
             const int MIN_BET = 1;
             const int MAX_BET = 10;
             const int JACKPOT = 50;
+            const string MODE_VERTICAL = "v";
+            const string MODE_HORIZONTAL = "h";
+            const string MODE_DIAGONAL = "d";
+            const string MODE_MIDDLE = "x";
 
 
             int playerBet = 0;
