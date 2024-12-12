@@ -27,7 +27,7 @@
 
             string playerLine = Console.ReadLine().ToLower();
 
-            List<string> playersGridchoice = ["v", "h", "d", "x"];
+            List<string> playersGridchoice = [MODE_VERTICAL, MODE_HORIZONTAL, MODE_DIAGONAL, MODE_MIDDLE];
 
 
             while (!playersGridchoice.Contains(playerLine))
@@ -80,16 +80,16 @@
 
             }
 
-            if (playerLine == "x" && grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2])
+            if (playerLine == MODE_MIDDLE && grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2])
             {
                 Console.WriteLine("Good job. You have won " + JACKPOT);
                 Console.WriteLine("Your purse now is " + (Purse + JACKPOT));
             }
-            if (playerLine == "h")
+            if (playerLine == MODE_HORIZONTAL)
             {
 
             }
-            if (playerLine == "v")
+            if (playerLine == MODE_VERTICAL)
             {
 
             }
