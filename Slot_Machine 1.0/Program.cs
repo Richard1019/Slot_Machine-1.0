@@ -11,6 +11,8 @@
             const int MIN_BET = 1;
             const int MAX_BET = 10;
             const int JACKPOT = 50;
+            const int MIN_ROW_NUMBER = 1;
+            const int MAX_ROW_NUMBER = 3;
             const string MODE_VERTICAL = "v";
             const string MODE_HORIZONTAL = "h";
             const string MODE_DIAGONAL = "d";
@@ -68,7 +70,7 @@
             {
                 for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                 {
-                    grid[rowindex, columnindex] = randomNumber.Next(1, 3);
+                    grid[rowindex, columnindex] = randomNumber.Next(MIN_ROW_NUMBER, MAX_ROW_NUMBER);
                     //grid[rowindex, columnindex] = 1;
                 }
             }
