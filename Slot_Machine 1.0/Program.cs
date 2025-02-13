@@ -2,6 +2,8 @@
 {
     internal class Program
     {
+        private static int columnindex;
+
         static void Main(string[] args)
         {
             const int GRID_ROWS = 3;
@@ -101,9 +103,9 @@
                         Console.WriteLine("No luck this time..");
                     }
                 }
+
                 if (win)
                 {
-                    //check win value and print messages
                     Console.WriteLine("Good job. You have won " + JACKPOT);
                     Console.WriteLine("Your purse now is " + (purse + JACKPOT));
                 }
@@ -111,8 +113,27 @@
 
             if (playerLine == MODE_HORIZONTAL)
             {
+                win = true;
+
+                for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
+                {
+
+                    if (grid[rowindex, columnindex] != grid[rowindex, 0])
+                    {
+                        win = false;
+                        Console.WriteLine("Sorry, no luck this time..");
+                    }
+                }
+
+                if (win)
+                {
+                    purse += playerBet * 2;
+                    Console.WriteLine("You won horizontally! Your purse is now: " + purse);
+                }
 
             }
+
+
             if (playerLine == MODE_VERTICAL)
             {
 
