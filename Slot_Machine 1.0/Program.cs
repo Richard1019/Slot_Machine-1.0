@@ -128,8 +128,9 @@
                         if (grid[rowindex, colIndex] != grid[rowindex, 0])
                         {
                             win = false;
+                            continue;
                         }
-                        continue;
+                        
                     }
                 }
                 Console.WriteLine("Sorry, no luck this time..");
@@ -154,9 +155,11 @@
                         if (grid[rowindex, columnindex] != grid[columnindex, 0])
                         {
                             win = false;
+                            continue;
                         }
-                        continue;
+                        
                     }
+                    
                 }
                 Console.WriteLine("Sorry, no luck this time..");
 
@@ -177,4 +180,5 @@
             }
         }
     }
+}
 
