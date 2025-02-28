@@ -28,6 +28,7 @@
 
             Console.WriteLine("\nNow decide which grids you wanna play!");
             Console.WriteLine("v for vertical, h for horizontal, d is for diagonal and x is for the middle.");
+            //while..
 
             string playerLine = Console.ReadLine().ToLower();
 
@@ -113,19 +114,25 @@
                 }
             }
 
+            // 1 2 1
+            // 1 1 0
+            // 1 2 1
             if (playerLine == MODE_HORIZONTAL)
             {
                 win = true;
 
                 for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                 {
-
-                    if (grid[rowindex, columnindex] != grid[rowindex, 0])
+                    for (int colIndex = 0; colIndex < GRID_COLUMNS; colIndex++)
                     {
-                        win = false;
-                        Console.WriteLine("Sorry, no luck this time..");
+                        if (grid[rowindex, colIndex] != grid[rowindex, 0])
+                        {
+                            win = false;
+                        }
+                        continue;
                     }
                 }
+                Console.WriteLine("Sorry, no luck this time..");
 
                 if (win)
                 {
@@ -138,16 +145,36 @@
 
             if (playerLine == MODE_VERTICAL)
             {
+                win = true;
+
+                for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                {
+                    for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
+                    {
+                        if (grid[rowindex, columnindex] != grid[columnindex, 0])
+                        {
+                            win = false;
+                        }
+                        continue;
+                    }
+                }
+                Console.WriteLine("Sorry, no luck this time..");
+
+                if (win)
+                {
+                    purse += playerBet * 2;
+                    Console.WriteLine("You won vertically! Your purse is now: " + purse);
+                }
+
+
+                if (playerLine == MODE_DIAGONAL)
+                {
+                    // grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2] DIAGONAL
+                }
+
+                //check if thw user won or not utilize win variable
 
             }
-            if (playerLine == MODE_DIAGONAL)
-            {
-                // grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2]
-            }
-
-            //check if thw user won or not utilize win variable
-
         }
     }
-}
 
