@@ -25,11 +25,15 @@
             Console.WriteLine("\nWanna play some Slot machine..? Of course you do..");
             Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line is jackpot, which instantly adds" + JACKPOT);
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
+
             while (purse > 0)
+
             {
                 Console.WriteLine("\nNow decide which grids you wanna play!");
                 Console.WriteLine("v for vertical, h for horizontal, d is for diagonal and x is for the middle.");
                 //while..
+
+
 
                 string playerLine = Console.ReadLine().ToLower();
 
@@ -133,17 +137,20 @@
                             {
                                 win = false;
                                 continue;
+                                
                             }
-
+                            
                         }
+                        
                     }
                     Console.WriteLine("Sorry, no luck this time..");
-                    Console.WriteLine("Your purse is now " + purse + "dollar");
+                    Console.WriteLine("Your purse is now " + purse + " dollar");
+
 
                     if (win)
                     {
                         purse += playerBet * 2;
-                        Console.WriteLine("You won horizontally! Your purse is now: " + purse);
+                        Console.WriteLine("You won horizontally! Your purse is now: " + purse + " dollar");
                     }
 
                 }
@@ -167,12 +174,12 @@
 
                     }
                     Console.WriteLine("Sorry, no luck this time..");
-                    Console.WriteLine("Your purse is now " + purse +"dollar");
+                    Console.WriteLine("Your purse is now " + purse + " dollar");
 
                     if (win)
                     {
                         purse += playerBet * 2;
-                        Console.WriteLine("You won vertically! Your purse is now: " + purse);
+                        Console.WriteLine("You won vertically! Your purse is now: " + purse + "dollar");
                     }
 
 
@@ -184,7 +191,14 @@
                     //check if thw user won or not utilize win variable
 
                 }
+                if (purse <= 0)
+                {
+                    Console.WriteLine("Sorry, you're out of money! Game over.");
+                    break;
+                }
+
             }
+            
         }
     }
 }
