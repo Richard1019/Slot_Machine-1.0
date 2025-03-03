@@ -112,7 +112,7 @@
                         {
                             win = false;
                             Console.WriteLine("No luck this time..");
-                            Console.WriteLine("Your purse is now " + purse + "dollar");
+                            Console.WriteLine("Your purse is now " + purse + " dollar");
                         }
                     }
 
