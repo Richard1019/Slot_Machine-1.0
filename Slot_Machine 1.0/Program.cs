@@ -68,6 +68,8 @@
                 int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
                 Random randomNumber = new Random();
 
+                purse -= playerBet;
+
                 for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                 {
                     for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
@@ -81,7 +83,7 @@
                 {
                     for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
-                        Console.Write(grid[rowindex, columnindex]);
+                        Console.Write(grid[rowindex, columnindex] + " ");
                     }
                     Console.WriteLine();
                 }
@@ -105,6 +107,7 @@
                         {
                             win = false;
                             Console.WriteLine("No luck this time..");
+                            Console.WriteLine("Your purse is now " + purse + "dollar");
                         }
                     }
 
@@ -135,6 +138,7 @@
                         }
                     }
                     Console.WriteLine("Sorry, no luck this time..");
+                    Console.WriteLine("Your purse is now " + purse + "dollar");
 
                     if (win)
                     {
@@ -163,6 +167,7 @@
 
                     }
                     Console.WriteLine("Sorry, no luck this time..");
+                    Console.WriteLine("Your purse is now " + purse +"dollar");
 
                     if (win)
                     {
