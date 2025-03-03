@@ -23,7 +23,8 @@
             int purse = 20;
 
             Console.WriteLine("\nWanna play some Slot machine..? Of course you do..");
-            Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line is jackpot, which instantly adds" + JACKPOT);
+            Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line instantly adds" + MAX_BET);
+            Console.WriteLine("You get the jackpot if all lines AND rows are the same!");
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
 
             while (purse > 0)
@@ -79,7 +80,7 @@
                     for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
                         grid[rowindex, columnindex] = randomNumber.Next(MIN_ROW_NUMBER, MAX_ROW_NUMBER);
-                        //grid[rowindex, columnindex] = 1;
+                        grid[rowindex, columnindex] = 1;
                     }
                 }
 
@@ -117,8 +118,8 @@
 
                     if (win)
                     {
-                        Console.WriteLine("Good job. You have won " + JACKPOT);
-                        Console.WriteLine("Your purse now is " + (purse + JACKPOT));
+                        Console.WriteLine("Good job. You have won " + MAX_BET);
+                        Console.WriteLine("Your purse now is " + (purse + MAX_BET));
                     }
                 }
 
@@ -136,6 +137,8 @@
                             if (grid[rowindex, colIndex] != grid[rowindex, 0])
                             {
                                 win = false;
+                                Console.WriteLine("Sorry, no luck this time..");
+                                Console.WriteLine("Your purse is now " + purse + " dollar");
                                 continue;
                                 
                             }
@@ -143,8 +146,7 @@
                         }
                         
                     }
-                    Console.WriteLine("Sorry, no luck this time..");
-                    Console.WriteLine("Your purse is now " + purse + " dollar");
+                    
 
 
                     if (win)
@@ -167,18 +169,19 @@
                             if (grid[rowindex, columnindex] != grid[columnindex, 0])
                             {
                                 win = false;
+                                Console.WriteLine("Sorry, no luck this time..");
+                                Console.WriteLine("Your purse is now " + purse + " dollar");
                                 continue;
                             }
 
                         }
-
+                        
                     }
-                    Console.WriteLine("Sorry, no luck this time..");
-                    Console.WriteLine("Your purse is now " + purse + " dollar");
+                    
 
                     if (win)
                     {
-                        purse += playerBet * 2;
+                        purse += playerBet * 3;
                         Console.WriteLine("You won vertically! Your purse is now: " + purse + "dollar");
                     }
 
