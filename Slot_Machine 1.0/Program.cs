@@ -25,158 +25,160 @@
             Console.WriteLine("\nWanna play some Slot machine..? Of course you do..");
             Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line is jackpot, which instantly adds" + JACKPOT);
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
-
-            Console.WriteLine("\nNow decide which grids you wanna play!");
-            Console.WriteLine("v for vertical, h for horizontal, d is for diagonal and x is for the middle.");
-            //while..
-
-            string playerLine = Console.ReadLine().ToLower();
-
-            List<string> playersGridchoice = [MODE_VERTICAL, MODE_HORIZONTAL, MODE_DIAGONAL, MODE_MIDDLE];
-
-
-            while (!playersGridchoice.Contains(playerLine))
+            while (purse > 0)
             {
-                Console.WriteLine("Invalid Input. Please use the assigned letters.");
-                playerLine = Console.ReadLine().ToLower();
-            }
+                Console.WriteLine("\nNow decide which grids you wanna play!");
+                Console.WriteLine("v for vertical, h for horizontal, d is for diagonal and x is for the middle.");
+                //while..
+
+                string playerLine = Console.ReadLine().ToLower();
+
+                List<string> playersGridchoice = [MODE_VERTICAL, MODE_HORIZONTAL, MODE_DIAGONAL, MODE_MIDDLE];
 
 
-            Console.WriteLine("Alright, go on, place your bet now! From " + MIN_BET + " dollar to " + MAX_BET);
-
-
-
-            bool success = int.TryParse(Console.ReadLine(), out playerBet);
-
-            while (!success || playerBet <= 0 || playerBet > MAX_BET)
-
-            {
-                if (!success)
+                while (!playersGridchoice.Contains(playerLine))
                 {
-                    Console.WriteLine("Invalid input, try again");
+                    Console.WriteLine("Invalid Input. Please use the assigned letters.");
+                    playerLine = Console.ReadLine().ToLower();
                 }
-                else if (playerBet <= 0 || playerBet > MAX_BET)
+
+
+                Console.WriteLine("Alright, go on, place your bet now! From " + MIN_BET + " dollar to " + MAX_BET);
+
+
+
+                bool success = int.TryParse(Console.ReadLine(), out playerBet);
+
+                while (!success || playerBet <= 0 || playerBet > MAX_BET)
+
                 {
-                    Console.WriteLine($"Invalid bet. Your bet must be between {MIN_BET} and {MAX_BET}.");
-                }
-                success = int.TryParse(Console.ReadLine(), out playerBet);
-
-            }
-
-            Console.WriteLine("Good. Now let`s spin that thing.");
-            int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
-            Random randomNumber = new Random();
-
-            for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
-            {
-                for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
-                {
-                    grid[rowindex, columnindex] = randomNumber.Next(MIN_ROW_NUMBER, MAX_ROW_NUMBER);
-                    //grid[rowindex, columnindex] = 1;
-                }
-            }
-
-            for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
-            {
-                for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
-                {
-                    Console.Write(grid[rowindex, columnindex]);
-                }
-                Console.WriteLine();
-            }
-            int middleLine = GRID_ROWS / 2;
-            bool win = true;
-            // 2 1 2 N/2 -> 1.5 ->1 5/2->2.5->2 N is the size of the grid
-            // 2 2 2
-            // 1 2 1
-
-            //1 2 2 1 3
-            //1 2 1 2 3
-            //1 3 2 2 1 grid[middleLIne,0]-> grid[middleLIne,j] j=0,j=1,j=2
-            //2 1 3 2 2 
-            //3 2 3 1 3
-            if (playerLine == MODE_MIDDLE)
-            {
-
-                for (int columnindex = 0; columnindex < GRID_ROWS; columnindex++)
-                {
-                    if (grid[middleLine, 0] != grid[middleLine, columnindex])
+                    if (!success)
                     {
-                        win = false;
-                        Console.WriteLine("No luck this time..");
+                        Console.WriteLine("Invalid input, try again");
                     }
+                    else if (playerBet <= 0 || playerBet > MAX_BET)
+                    {
+                        Console.WriteLine($"Invalid bet. Your bet must be between {MIN_BET} and {MAX_BET}.");
+                    }
+                    success = int.TryParse(Console.ReadLine(), out playerBet);
+
                 }
 
-                if (win)
-                {
-                    Console.WriteLine("Good job. You have won " + JACKPOT);
-                    Console.WriteLine("Your purse now is " + (purse + JACKPOT));
-                }
-            }
-
-            // 1 2 1
-            // 1 1 0
-            // 1 2 1
-            if (playerLine == MODE_HORIZONTAL)
-            {
-                win = true;
+                Console.WriteLine("Good. Now let`s spin that thing.");
+                int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
+                Random randomNumber = new Random();
 
                 for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                 {
-                    for (int colIndex = 0; colIndex < GRID_COLUMNS; colIndex++)
+                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
-                        if (grid[rowindex, colIndex] != grid[rowindex, 0])
-                        {
-                            win = false;
-                            continue;
-                        }
-                        
+                        grid[rowindex, columnindex] = randomNumber.Next(MIN_ROW_NUMBER, MAX_ROW_NUMBER);
+                        //grid[rowindex, columnindex] = 1;
                     }
                 }
-                Console.WriteLine("Sorry, no luck this time..");
 
-                if (win)
+                for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                 {
-                    purse += playerBet * 2;
-                    Console.WriteLine("You won horizontally! Your purse is now: " + purse);
+                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                    {
+                        Console.Write(grid[rowindex, columnindex]);
+                    }
+                    Console.WriteLine();
+                }
+                int middleLine = GRID_ROWS / 2;
+                bool win = true;
+                // 2 1 2 N/2 -> 1.5 ->1 5/2->2.5->2 N is the size of the grid
+                // 2 2 2
+                // 1 2 1
+
+                //1 2 2 1 3
+                //1 2 1 2 3
+                //1 3 2 2 1 grid[middleLIne,0]-> grid[middleLIne,j] j=0,j=1,j=2
+                //2 1 3 2 2 
+                //3 2 3 1 3
+                if (playerLine == MODE_MIDDLE)
+                {
+
+                    for (int columnindex = 0; columnindex < GRID_ROWS; columnindex++)
+                    {
+                        if (grid[middleLine, 0] != grid[middleLine, columnindex])
+                        {
+                            win = false;
+                            Console.WriteLine("No luck this time..");
+                        }
+                    }
+
+                    if (win)
+                    {
+                        Console.WriteLine("Good job. You have won " + JACKPOT);
+                        Console.WriteLine("Your purse now is " + (purse + JACKPOT));
+                    }
                 }
 
-            }
-
-
-            if (playerLine == MODE_VERTICAL)
-            {
-                win = true;
-
-                for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                // 1 2 1
+                // 1 1 0
+                // 1 2 1
+                if (playerLine == MODE_HORIZONTAL)
                 {
+                    win = true;
+
                     for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                     {
-                        if (grid[rowindex, columnindex] != grid[columnindex, 0])
+                        for (int colIndex = 0; colIndex < GRID_COLUMNS; colIndex++)
                         {
-                            win = false;
-                            continue;
+                            if (grid[rowindex, colIndex] != grid[rowindex, 0])
+                            {
+                                win = false;
+                                continue;
+                            }
+
                         }
-                        
                     }
-                    
-                }
-                Console.WriteLine("Sorry, no luck this time..");
+                    Console.WriteLine("Sorry, no luck this time..");
 
-                if (win)
+                    if (win)
+                    {
+                        purse += playerBet * 2;
+                        Console.WriteLine("You won horizontally! Your purse is now: " + purse);
+                    }
+
+                }
+
+
+                if (playerLine == MODE_VERTICAL)
                 {
-                    purse += playerBet * 2;
-                    Console.WriteLine("You won vertically! Your purse is now: " + purse);
+                    win = true;
+
+                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
+                    {
+                        for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
+                        {
+                            if (grid[rowindex, columnindex] != grid[columnindex, 0])
+                            {
+                                win = false;
+                                continue;
+                            }
+
+                        }
+
+                    }
+                    Console.WriteLine("Sorry, no luck this time..");
+
+                    if (win)
+                    {
+                        purse += playerBet * 2;
+                        Console.WriteLine("You won vertically! Your purse is now: " + purse);
+                    }
+
+
+                    if (playerLine == MODE_DIAGONAL)
+                    {
+                        // grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2] DIAGONAL
+                    }
+
+                    //check if thw user won or not utilize win variable
+
                 }
-
-
-                if (playerLine == MODE_DIAGONAL)
-                {
-                    // grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2] DIAGONAL
-                }
-
-                //check if thw user won or not utilize win variable
-
             }
         }
     }
