@@ -23,7 +23,7 @@
             int purse = 20;
 
             Console.WriteLine("\nWanna play some Slot machine..? Of course you do..");
-            Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line instantly adds" + MAX_BET);
+            Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line instantly adds " + MAX_BET + " dollar");
             Console.WriteLine("You get the jackpot if all lines AND rows are the same!");
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
 
@@ -112,8 +112,6 @@
                         if (grid[middleLine, 0] != grid[middleLine, columnindex])
                         {
                             win = false;
-                            Console.WriteLine("No luck this time..");
-                            Console.WriteLine("Your purse is now " + purse + " dollar");
                             break;
                         }
                     }
@@ -135,7 +133,7 @@
                 // 1 2 1
                 if (playerLine == MODE_HORIZONTAL)
                 {
-                 win = true;
+                    win = true;
 
                     for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                     {
@@ -149,9 +147,7 @@
                             }
                         }
                     }
-                    Console.WriteLine("Sorry, no luck this time..");
-                    Console.WriteLine("Your purse is now " + purse + " dollar");
-
+                    
                     if (win)
                     {
                         purse += playerBet * 2;
@@ -179,7 +175,7 @@
                                 break;
                             }
                         }
-                        
+
                     }
 
                     if (win)
