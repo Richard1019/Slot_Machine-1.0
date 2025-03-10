@@ -80,7 +80,7 @@
                     for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
                         grid[rowindex, columnindex] = randomNumber.Next(MIN_ROW_NUMBER, MAX_ROW_NUMBER);
-                        //grid[rowindex, columnindex] = 1;
+                        grid[rowindex, columnindex] = 1;
                     }
                 }
 
@@ -94,6 +94,7 @@
                 }
                 int middleLine = GRID_ROWS / 2;
                 bool win = true;
+
                 // 2 1 2 N/2 -> 1.5 ->1 5/2->2.5->2 N is the size of the grid
                 // 2 2 2
                 // 1 2 1
@@ -122,6 +123,11 @@
                         Console.WriteLine("Good job. You have won " + MAX_BET);
                         Console.WriteLine("Your purse now is " + (purse + MAX_BET));
                     }
+                    else
+                    {
+                        Console.WriteLine("Sorry, no luck this time..");
+                        Console.WriteLine("Your purse is now " + purse + " dollar");
+                    }
                 }
 
                 // 1 2 1
@@ -129,7 +135,7 @@
                 // 1 2 1
                 if (playerLine == MODE_HORIZONTAL)
                 {
-                    win = true;
+                 win = true;
 
                     for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                     {
@@ -151,6 +157,11 @@
                         purse += playerBet * 2;
                         Console.WriteLine("You won horizontally! Your purse is now: " + purse + " dollar");
                     }
+                    else
+                    {
+                        Console.WriteLine("Sorry, no luck this time..");
+                        Console.WriteLine("Your purse is now " + purse + " dollar");
+                    }
                 }
 
 
@@ -168,14 +179,18 @@
                                 break;
                             }
                         }
+                        
                     }
-                    Console.WriteLine("Sorry, no luck this time..");
-                    Console.WriteLine("Your purse is now " + purse + " dollar");
 
                     if (win)
                     {
                         purse += playerBet * 3;
                         Console.WriteLine("You won vertically! Your purse is now: " + purse + " dollar");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, no luck this time..");
+                        Console.WriteLine("Your purse is now " + purse + " dollar");
                     }
 
 
@@ -194,8 +209,8 @@
                 }
 
             }
-
         }
     }
 }
+
 
