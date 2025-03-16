@@ -23,7 +23,7 @@
 
             Console.WriteLine("\nWanna play some Slot machine..? Of course you do..");
             Console.WriteLine("\nSo, every horizontal and vertical line doubles your bet, every line across triples it, and the middle line instantly adds " + MAX_BET + " dollar");
-            Console.WriteLine("You get the jackpot if all lines AND rows are the same!");
+            //Console.WriteLine("You get the jackpot if all lines AND rows are the same!");
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
 
             while (purse > 0)
@@ -59,6 +59,7 @@
                 Console.WriteLine("Good. Now let`s spin that thing.");
                 int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
                 Random randomNumber = new Random();
+
                 purse -= playerBet;
 
                 for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
@@ -66,6 +67,7 @@
                     for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
                         grid[rowindex, columnindex] = randomNumber.Next(MIN_ROW_NUMBER, MAX_ROW_NUMBER);
+                        grid[rowindex, columnindex] = 1;
                     }
                 }
 
@@ -179,6 +181,12 @@
                         Console.WriteLine("Sorry, no luck this time..");
                         Console.WriteLine("Your purse is now " + purse);
                     }
+                }
+                if (grid[0, 0] == grid[0, 1] && grid[0, 1] == grid[0, 2] && grid[1, 0] == grid[1, 1] && grid[1, 1] == grid[1, 2] && grid[2, 0] == grid[2, 1] && grid[2, 1] == grid[2, 2])
+                {
+                    Console.WriteLine("Congratulations! You've hit the jackpot! You've won " + JACKPOT + " dollars!");
+                    purse += JACKPOT;
+                    Console.WriteLine("Your purse now is " + purse);
                 }
 
                 if (purse <= 0)
