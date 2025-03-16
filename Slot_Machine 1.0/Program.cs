@@ -38,7 +38,7 @@
 
                 string playerLine = Console.ReadLine().ToLower();
 
-                List<string> playersGridchoice = [MODE_VERTICAL, MODE_HORIZONTAL, MODE_DIAGONAL, MODE_MIDDLE];
+                List<string> playersGridchoice = new List<string> { MODE_VERTICAL, MODE_HORIZONTAL, MODE_DIAGONAL, MODE_MIDDLE };
 
 
                 while (!playersGridchoice.Contains(playerLine))
@@ -80,7 +80,7 @@
                     for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
                         grid[rowindex, columnindex] = randomNumber.Next(MIN_ROW_NUMBER, MAX_ROW_NUMBER);
-                        grid[rowindex, columnindex] = 1;
+                        //grid[rowindex, columnindex] = 1;
                     }
                 }
 
@@ -119,6 +119,7 @@
                     if (win)
                     {
                         Console.WriteLine("Good job. You have won " + MAX_BET);
+                        purse += MAX_BET;
                         Console.WriteLine("Your purse now is " + (purse + MAX_BET));
                     }
                     else
@@ -147,7 +148,7 @@
                             }
                         }
                     }
-                    
+
                     if (win)
                     {
                         purse += playerBet * 2;
@@ -169,7 +170,7 @@
                     {
                         for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                         {
-                            if (grid[rowindex, columnindex] != grid[columnindex, 0])
+                            if (grid[rowindex, columnindex] != grid[0, columnindex])
                             {
                                 win = false;
                                 break;
@@ -180,7 +181,7 @@
 
                     if (win)
                     {
-                        purse += playerBet * 3;
+                        purse += playerBet * 2;
                         Console.WriteLine("You won vertically! Your purse is now: " + purse + " dollar");
                     }
                     else
@@ -190,12 +191,33 @@
                     }
 
 
-                    if (playerLine == MODE_DIAGONAL)
+
+                if (playerLine == MODE_DIAGONAL)
                     {
-                        // grid[1, 1] == grid[0, 0] && grid[1, 1] == grid[2, 2] DIAGONAL
+                        win = true;
+                        
+                        if (grid[0, 0] != grid[1, 1] || grid[1, 1] != grid[2, 2])
+                        {
+                            win = false;
+                        }
+                       
+                        if (grid[0, 2] != grid[1, 1] || grid[1, 1] != grid[2, 0])
+                        {
+                            win = false;
+                        }
+
+                        if (win)
+                        {
+                            purse += playerBet * 3;
+                            Console.WriteLine("You won diagonally! Your purse is now: " + purse + " dollar");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Sorry, no luck this time..");
+                            Console.WriteLine("Your purse is now " + purse + " dollar");
+                        }
                     }
 
-                    //check if thw user won or not utilize win variable
 
                 }
                 if (purse <= 0)
