@@ -18,7 +18,6 @@
             const string MODE_DIAGONAL = "d";
             const string MODE_MIDDLE = "x";
 
-
             int playerBet = 0;
             int purse = 20;
 
@@ -28,18 +27,12 @@
             Console.WriteLine("Got 20 dollars in your purse to get you going!");
 
             while (purse > 0)
-
             {
                 Console.WriteLine("\nNow decide which grids you wanna play!");
                 Console.WriteLine("v for vertical, h for horizontal, d is for diagonal and x is for the middle.");
-                //while..
-
-
-
                 string playerLine = Console.ReadLine().ToLower();
 
                 List<string> playersGridchoice = new List<string> { MODE_VERTICAL, MODE_HORIZONTAL, MODE_DIAGONAL, MODE_MIDDLE };
-
 
                 while (!playersGridchoice.Contains(playerLine))
                 {
@@ -47,32 +40,25 @@
                     playerLine = Console.ReadLine().ToLower();
                 }
 
-
                 Console.WriteLine("Alright, go on, place your bet now! From " + MIN_BET + " dollar to " + MAX_BET);
-
-
-
                 bool success = int.TryParse(Console.ReadLine(), out playerBet);
 
-                while (!success || playerBet <= 0 || playerBet > MAX_BET)
-
+                while (!success || playerBet < MIN_BET || playerBet > MAX_BET)
                 {
                     if (!success)
                     {
                         Console.WriteLine("Invalid input, try again");
                     }
-                    else if (playerBet <= 0 || playerBet > MAX_BET)
+                    else if (playerBet < MIN_BET || playerBet > MAX_BET)
                     {
                         Console.WriteLine($"Invalid bet. Your bet must be between {MIN_BET} and {MAX_BET}.");
                     }
                     success = int.TryParse(Console.ReadLine(), out playerBet);
-
                 }
 
                 Console.WriteLine("Good. Now let`s spin that thing.");
                 int[,] grid = new int[GRID_ROWS, GRID_COLUMNS];
                 Random randomNumber = new Random();
-
                 purse -= playerBet;
 
                 for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
@@ -80,7 +66,6 @@
                     for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
                         grid[rowindex, columnindex] = randomNumber.Next(MIN_ROW_NUMBER, MAX_ROW_NUMBER);
-                        //grid[rowindex, columnindex] = 1;
                     }
                 }
 
@@ -92,22 +77,14 @@
                     }
                     Console.WriteLine();
                 }
-                int middleLine = GRID_ROWS / 2;
-                bool win = true;
 
-                // 2 1 2 N/2 -> 1.5 ->1 5/2->2.5->2 N is the size of the grid
-                // 2 2 2
-                // 1 2 1
+                bool win = false;
 
-                //1 2 2 1 3
-                //1 2 1 2 3
-                //1 3 2 2 1 grid[middleLIne,0]-> grid[middleLIne,j] j=0,j=1,j=2
-                //2 1 3 2 2 
-                //3 2 3 1 3
                 if (playerLine == MODE_MIDDLE)
                 {
-
-                    for (int columnindex = 0; columnindex < GRID_ROWS; columnindex++)
+                    int middleLine = GRID_ROWS / 2;
+                    win = true;
+                    for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
                         if (grid[middleLine, 0] != grid[middleLine, columnindex])
                         {
@@ -120,22 +97,18 @@
                     {
                         Console.WriteLine("Good job. You have won " + MAX_BET);
                         purse += MAX_BET;
-                        Console.WriteLine("Your purse now is " + (purse + MAX_BET));
+                        Console.WriteLine("Your purse now is " + purse);
                     }
                     else
                     {
                         Console.WriteLine("Sorry, no luck this time..");
-                        Console.WriteLine("Your purse is now " + purse + " dollar");
+                        Console.WriteLine("Your purse is now " + purse);
                     }
                 }
 
-                // 1 2 1
-                // 1 1 0
-                // 1 2 1
                 if (playerLine == MODE_HORIZONTAL)
                 {
                     win = true;
-
                     for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
                     {
                         for (int colIndex = 0; colIndex < GRID_COLUMNS; colIndex++)
@@ -144,7 +117,6 @@
                             {
                                 win = false;
                                 break;
-
                             }
                         }
                     }
@@ -152,20 +124,18 @@
                     if (win)
                     {
                         purse += playerBet * 2;
-                        Console.WriteLine("You won horizontally! Your purse is now: " + purse + " dollar");
+                        Console.WriteLine("You won horizontally! Your purse is now: " + purse);
                     }
                     else
                     {
                         Console.WriteLine("Sorry, no luck this time..");
-                        Console.WriteLine("Your purse is now " + purse + " dollar");
+                        Console.WriteLine("Your purse is now " + purse);
                     }
                 }
-
 
                 if (playerLine == MODE_VERTICAL)
                 {
                     win = true;
-
                     for (int columnindex = 0; columnindex < GRID_COLUMNS; columnindex++)
                     {
                         for (int rowindex = 0; rowindex < GRID_ROWS; rowindex++)
@@ -176,59 +146,47 @@
                                 break;
                             }
                         }
-
                     }
 
                     if (win)
                     {
                         purse += playerBet * 2;
-                        Console.WriteLine("You won vertically! Your purse is now: " + purse + " dollar");
+                        Console.WriteLine("You won vertically! Your purse is now: " + purse);
                     }
                     else
                     {
                         Console.WriteLine("Sorry, no luck this time..");
-                        Console.WriteLine("Your purse is now " + purse + " dollar");
+                        Console.WriteLine("Your purse is now " + purse);
                     }
-
-
-
-                if (playerLine == MODE_DIAGONAL)
-                    {
-                        win = true;
-                        
-                        if (grid[0, 0] != grid[1, 1] || grid[1, 1] != grid[2, 2])
-                        {
-                            win = false;
-                        }
-                       
-                        if (grid[0, 2] != grid[1, 1] || grid[1, 1] != grid[2, 0])
-                        {
-                            win = false;
-                        }
-
-                        if (win)
-                        {
-                            purse += playerBet * 3;
-                            Console.WriteLine("You won diagonally! Your purse is now: " + purse + " dollar");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Sorry, no luck this time..");
-                            Console.WriteLine("Your purse is now " + purse + " dollar");
-                        }
-                    }
-
-
                 }
+
+                
+                if (playerLine == MODE_DIAGONAL)
+                {
+                    win = true;
+                    if (grid[0, 0] != grid[1, 1] || grid[1, 1] != grid[2, 2] || grid[0, 2] != grid[1, 1] || grid[1, 1] != grid[2, 0])
+                    {
+                        win = false;
+                    }
+
+                    if (win)
+                    {
+                        purse += playerBet * 3;
+                        Console.WriteLine("You won diagonally! Your purse is now: " + purse);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Sorry, no luck this time..");
+                        Console.WriteLine("Your purse is now " + purse);
+                    }
+                }
+
                 if (purse <= 0)
                 {
                     Console.WriteLine("Sorry, you're out of money! Game over.");
-                    break;
                 }
-
             }
         }
     }
 }
-
 
